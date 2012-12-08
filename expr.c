@@ -21,7 +21,13 @@
 #include <string.h>
 #include <assert.h>
 #include <errno.h>
-#include <error.h>
+
+#ifdef HAVE_ANDROID_OS
+# include "bionic-fixup/error.h"
+#else
+# include <error.h>
+#endif
+
 #include <stdlib.h>
 
 #include "expr.h"

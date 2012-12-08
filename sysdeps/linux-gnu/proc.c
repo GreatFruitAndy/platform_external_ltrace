@@ -22,7 +22,6 @@
  */
 
 #define _GNU_SOURCE /* For getline.  */
-#include "config.h"
 
 #include <sys/stat.h>
 #include <sys/syscall.h>
@@ -41,12 +40,15 @@
 
 #include "backend.h"
 #include "breakpoint.h"
-#include "config.h"
 #include "debug.h"
 #include "events.h"
 #include "library.h"
 #include "ltrace-elf.h"
 #include "proc.h"
+
+#ifdef HAVE_ANDROID_OS
+# include "bionic-fixup/AndroidFixup.h"
+#endif
 
 /* /proc/pid doesn't exist just after the fork, and sometimes `ltrace'
  * couldn't open it to find the executable.  So it may be necessary to

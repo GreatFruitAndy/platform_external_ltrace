@@ -18,8 +18,6 @@
  * 02110-1301 USA
  */
 
-#include "config.h"
-
 extern char *cplus_demangle(const char *mangled, int options);
 
 const char *my_demangle(const char *function_name);

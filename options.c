@@ -23,8 +23,6 @@
  * 02110-1301 USA
  */
 
-#include "config.h"
-
 #include <sys/ioctl.h>
 #include <assert.h>
 #include <errno.h>
@@ -35,6 +33,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#ifdef HAVE_ANDROID_OS
+# include <asm/termios.h>
+#endif
 
 #include "common.h"
 #include "filter.h"
@@ -122,7 +123,7 @@ usage(void) {
 static void
 usage_debug(void) {
 	fprintf(stdout, "%s debugging option, --debug=<octal> or -D<octal>:\n", progname);
-	fprintf(stdout, 
+	fprintf(stdout,
 			"\n"
 			" number  ref. in source   description\n"
 			"      1   general           Generally helpful progress information\n"

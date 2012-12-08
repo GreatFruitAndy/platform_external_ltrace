@@ -20,13 +20,14 @@
  * 02110-1301 USA
  */
 
-#include "config.h"
-
-#include <sys/reg.h>
 #include <sys/wait.h>
 #include <assert.h>
 #include <errno.h>
 #include <stdlib.h>
+
+#ifndef HAVE_ANDROID_OS
+# include <sys/reg.h>
+#endif
 
 #include "backend.h"
 #include "debug.h"

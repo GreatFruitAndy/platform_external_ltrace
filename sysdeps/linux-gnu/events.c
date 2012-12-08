@@ -19,8 +19,6 @@
  * 02110-1301 USA
  */
 
-#include "config.h"
-
 #define	_GNU_SOURCE	1
 #include <sys/ptrace.h>
 #include <sys/types.h>

@@ -18,4 +18,8 @@
  */
 
 #include <sys/ptrace.h>
-#include <sys/user.h>
+#ifdef HAVE_ANDROID_OS
+# include <asm/user.h>
+#else
+# include <sys/user.h>
+#endif

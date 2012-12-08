@@ -23,8 +23,6 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-#include <config.h>
-
 #include <sys/types.h>
 #include <sys/time.h>
 #include <stdio.h>

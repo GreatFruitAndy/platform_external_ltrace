@@ -20,8 +20,6 @@
  * 02110-1301 USA
  */
 
-#include "config.h"
-
 #include <sys/types.h>
 #include <assert.h>
 #include <errno.h>

@@ -4,11 +4,17 @@ LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 LOCAL_MODULE := libltrace
 LOCAL_LDLIBS := -lpthread -ldl
-LOCAL_STATIC_LIBRARIES := libelf libos
-LOCAL_C_INCLUDES  += bionic/linker/ external/elfutils/libelf/
-LOCAL_CFLAG += -DHAVE_LIBIBERTY
+LOCAL_STATIC_LIBRARIES := libelf libcutils
+LOCAL_C_INCLUDES += \
+    $(LOCAL_PATH)/ \
+    $(LOCAL_PATH)/sysdeps/ \
+    $(LOCAL_PATH)/sysdeps/linux-gnu \
+    bionic/linker/ \
+    external/elfutils/libelf/ \
+    bionic/libc/private /
+LOCAL_CFLAGS += -DPACKAGE_VERSION=\"0.7.3-greatfruit\" -Wno-pointer-arith
 LOCAL_SRC_FILES := \
-breakpoints.c \
+    breakpoints.c \
     debug.c \
     demangle.c \
     dict.c \
@@ -35,14 +41,40 @@ breakpoints.c \
     zero.c \
     lens.c \
     lens_default.c \
-    lens_enum.c
-include $(BUILD_SHARED_LIBRARY)
+    lens_enum.c \
+    sysdeps/linux-gnu/events.c \
+    sysdeps/linux-gnu/trace.c \
+    sysdeps/linux-gnu/proc.c \
+    sysdeps/linux-gnu/breakpoint.c \
+    bionic-fixup/getline.c \
+    bionic-fixup/rindex.c
+
+ifeq ($(TARGET_ARCH),x86)
+    LOCAL_C_INCLUDES += $(LOCAL_PATH)/sysdeps/linux-gnu/x86/
+    LOCAL_SRC_FILES += \
+        sysdeps/linux-gnu/x86/plt.c \
+        sysdeps/linux-gnu/x86/regs.c \
+        sysdeps/linux-gnu/x86/trace.c \
+        sysdeps/linux-gnu/x86/fetch.c
+else
+    LOCAL_C_INCLUDES += $(LOCAL_PATH)/sysdeps/linux-gnu/arm/
+    LOCAL_SRC_FILES += \
+        sysdeps/linux-gnu/arm/breakpoint.c \
+        sysdeps/linux-gnu/arm/plt.c \
+        sysdeps/linux-gnu/arm/regs.c \
+        sysdeps/linux-gnu/arm/trace.c
+endif
+
+include $(BUILD_STATIC_LIBRARY)
 
 
 ####### ltrace
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := ltrace
-LOCAL_STATIC_LIBRARIES += libtrace
-LOCAL_SRC_FILES := main.c
+LOCAL_STATIC_LIBRARIES := libltrace libelf libcutils
+LOCAL_SRC_FILES := \
+    main.c \
+    bionic-fixup/dgettext.c \
+    bionic-fixup/lsearch.c
 include $(BUILD_EXECUTABLE)

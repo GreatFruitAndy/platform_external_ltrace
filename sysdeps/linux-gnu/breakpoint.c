@@ -20,8 +20,6 @@
  * 02110-1301 USA
  */
 
-#include "config.h"
-
 #include <sys/ptrace.h>
 #include <errno.h>
 #include <string.h>

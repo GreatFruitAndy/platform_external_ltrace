@@ -26,8 +26,6 @@
  * for open_memstream to become visible.  */
 #define _GNU_SOURCE
 
-#include "config.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>

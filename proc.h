@@ -23,8 +23,6 @@
 #ifndef _PROC_H_
 #define _PROC_H_
 
-#include "config.h"
-
 #include <sys/time.h>
 
 #if defined(HAVE_LIBUNWIND)

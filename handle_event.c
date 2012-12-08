@@ -23,8 +23,6 @@
  * 02110-1301 USA
  */
 
-#include "config.h"
-
 #define _GNU_SOURCE
 #include <assert.h>
 #include <errno.h>

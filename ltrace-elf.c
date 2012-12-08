@@ -25,8 +25,6 @@
  * 02110-1301 USA
  */
 
-#include "config.h"
-
 #include <assert.h>
 #ifdef	__linux__
 #include <endian.h>
@@ -49,6 +47,7 @@
 #include "proc.h"
 #include "debug.h"
 #include "options.h"
+
 
 #ifndef ARCH_HAVE_LTELF_DATA
 int

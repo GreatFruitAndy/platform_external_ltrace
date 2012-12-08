@@ -19,8 +19,6 @@
  * 02110-1301 USA
  */
 
-#include "config.h"
-
 #include <sys/param.h>
 #include <sys/wait.h>
 #include <errno.h>

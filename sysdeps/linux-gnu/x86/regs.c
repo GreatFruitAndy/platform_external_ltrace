@@ -19,14 +19,16 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA
  */
-#include "config.h"
 
 #include <sys/types.h>
 #include <sys/ptrace.h>
-#include <sys/reg.h>
 #include <errno.h>
 #include <stdio.h>
 #include <string.h>
+
+#ifndef HAVE_ANDROID_OS
+# include <sys/reg.h>
+#endif
 
 #include "backend.h"
 #include "proc.h"

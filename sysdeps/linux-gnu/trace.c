@@ -21,8 +21,6 @@
  * 02110-1301 USA
  */
 
-#include "config.h"
-
 #include <asm/unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>

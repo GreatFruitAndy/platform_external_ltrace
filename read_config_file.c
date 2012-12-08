@@ -21,13 +21,17 @@
  * 02110-1301 USA
  */
 
-#include "config.h"
-
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <errno.h>
-#include <error.h>
+
+#ifdef HAVE_ANDROID_OS
+# include "bionic-fixup/error.h"
+#else
+# include <error.h>
+#endif
+
 #include <assert.h>
 
 #include "common.h"
