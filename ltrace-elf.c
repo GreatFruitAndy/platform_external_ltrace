@@ -243,7 +243,17 @@ DEF_READER(elf_read_u64, 64)
 int
 open_elf(struct ltelf *lte, const char *filename)
 {
-	lte->fd = open(filename, O_RDONLY);
+	char system_lib[1024] = "/system/lib/";
+	char system_lib_hw[1024] = "/system/lib/hw";
+
+	lte->fd = open(strcat(system_lib, filename), O_RDONLY);
+
+	if (lte->fd == -1)
+		open(strcat(system_lib_hw, filename), O_RDONLY);
+
+	if (lte->fd == -1)
+		open(filename, O_RDONLY);
+
 	if (lte->fd == -1)
 		return 1;
 
