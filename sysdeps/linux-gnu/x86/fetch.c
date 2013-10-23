@@ -35,6 +35,10 @@
 #include "type.h"
 #include "value.h"
 
+#ifdef HAVE_ANDROID_OS
+# include "bionic-fixup/AndroidFixup.h"
+#endif
+
 enum arg_class {
 	CLASS_INTEGER,
 	CLASS_SSE,

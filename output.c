@@ -36,6 +36,10 @@
 #include <errno.h>
 #include <assert.h>
 
+#ifdef HAVE_ANDROID_OS
+# include <cutils/open_memstream.h>
+#endif
+
 #include "common.h"
 #include "proc.h"
 #include "library.h"

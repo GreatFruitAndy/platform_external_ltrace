@@ -98,4 +98,6 @@ ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 
 char *rindex(const char *s, int c);
 
+void *lsearch(const void *key, void *base, size_t *nmemb, size_t size, int(*compar)(const void *, const void *));
+
 #endif /* ANDROID_FIXUP_H */

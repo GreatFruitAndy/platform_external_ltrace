@@ -1,4 +1,5 @@
 #include <search.h>
+#include <string.h>
 
 void *lsearch(const void *key, void *base, size_t *nmemb, size_t size, int(*compar)(const void *, const void *))
 {
