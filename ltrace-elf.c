@@ -48,6 +48,10 @@
 #include "debug.h"
 #include "options.h"
 
+#ifdef HAVE_ANDROID_OS
+# include "bionic-fixup/AndroidFixup.h"
+#endif
+
 
 #ifndef ARCH_HAVE_LTELF_DATA
 int
